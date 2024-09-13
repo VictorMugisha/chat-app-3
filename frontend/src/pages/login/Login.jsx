@@ -32,10 +32,14 @@ export default function Login() {
 
           <a
             href="#"
-            className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+            className="text-sm hover:underline text-gray-300 hover:text-blue-600 mt-2 inline-block"
           >
             {"Don't"} have an account?
           </a>
+
+          <div>
+            <button className="btn btn-block btn-sm mt-2">Login</button>
+          </div>
         </form>
       </div>
     </div>
