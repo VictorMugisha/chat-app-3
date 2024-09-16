@@ -1,10 +1,12 @@
 import { useAuthContext } from "../../context/AuthContext";
+import { extractTime } from "../../utils/extractTime";
 import useConversation from "../../zustand/useConversation";
 
 export default function Message({ message }) {
   const { authUser } = useAuthContext();
   const { selectedConversation } = useConversation();
   const fromMe = message.senderId === authUser._id;
+  const fromattedTime = extractTime(message.createdAt);
 
   const chatClassName = fromMe ? "chat-end" : "chat-start";
   const profilePic = fromMe
@@ -20,10 +22,10 @@ export default function Message({ message }) {
       </div>
 
       <div className={`chat-bubble text-white pb-2 ${bubbleBgColor}`}>
-        Hey how are you!
+        {message.message}
       </div>
-      <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
-        12:42
+      <div className="chat-footer opacity-50 text-xs flex gap-1 items-center text-white">
+        {fromattedTime}
       </div>
     </div>
   );
